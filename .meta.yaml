@@ -1,0 +1,4 @@
+name: "Haskell"
+maintainer: "@bombsimon"
+spec: 3.0
+workflow: "haskell.yml"
