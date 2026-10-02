@@ -10,7 +10,7 @@ jobs:
     strategy:
       matrix:
         cabal:
-          - 3.6
+          - 3.10.3.0
         ghc:
           - 9.2.5
     env:
