@@ -40,3 +40,14 @@ jobs:
         with:
           path: '["src/", "tests/", "app/"]'
           fail-on: warning
+
+  # Single stable check for branch protection, so the ruleset does not need
+  # to change when the matrix does.
+  tests-passed:
+    if: always()
+    needs: [test, lint]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fail if any test job failed or was cancelled
+        if: contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled')
+        run: exit 1
